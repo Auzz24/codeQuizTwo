@@ -1,12 +1,26 @@
 var startBtn = document.getElementById("startBtn");
 var navBar = document.getElementById("navBar");
+var timerDiv = document.getElementById("timer");
+var secondsLeft = 29;
 
 function startQuiz() {
   startBtn.addEventListener("click", questionOne);
+  startBtn.addEventListener("click", countDown);
 }
 
+function countDown(){
+  var timer = setInterval(function(){
+    timerDiv.innerHTML = secondsLeft;
+    if(secondsLeft ===0){
+      clearInterval(timer);
+      window.alert("You Lost")
+    }
+    secondsLeft --;
+  }, 1000);
+};
 
 function questionOne() {
+  
   var startSection = document.getElementById("startQuiz");
   startSection.remove();
   var questionOne = document.createElement("div");
