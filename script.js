@@ -1,12 +1,17 @@
 var startBtn = document.getElementById("startBtn");
 var navBar = document.getElementById("navBar");
 var timerDiv = document.getElementById("timer");
-var secondsLeft = 29;
+var secondsLeft = 59;
 
 function startQuiz() {
   startBtn.addEventListener("click", questionOne);
   startBtn.addEventListener("click", countDown);
 }
+
+function wrongAnswer(){
+  var newTimer = secondsLeft -5;
+  timerDiv.innerHTML = newTimer;
+};
 
 function countDown(){
   var timer = setInterval(function(){
@@ -20,14 +25,16 @@ function countDown(){
 };
 
 function questionOne() {
-  
   var startSection = document.getElementById("startQuiz");
   startSection.remove();
   var questionOne = document.createElement("div");
-  questionOne.setAttribute("id", "questionOne")
+  questionOne.setAttribute("id", "questionOne");
   var answerOne = document.createElement("button");
+ //answerOne.setAttribute("class", "wrongAnswer");
   var answerTwo = document.createElement("button");
+  //answerTwo.setAttribute("class", "wrongAnswer");
   var answerThree = document.createElement("button");
+  //answerThree.setAttribute("class", "wrongAnswer");
   var answerCorrect = document.createElement("button");
   questionOne.innerText =
     "Which of the following is an actual JavaScript data type?";
@@ -45,10 +52,16 @@ function questionOne() {
   questionOne.appendChild(answerThree);
   questionOne.appendChild(answerCorrect);
   answerCorrect.setAttribute("id", "answerCorrect");
-  answerOne.setAttribute("id", "answerOne");
-  answerTwo.setAttribute("id", "answerTwo");
-  answerThree.setAttribute("id", "answerThree");
+  answerOne.setAttribute("class", "wrongAnswerOne");
+  answerTwo.setAttribute("class", "wrongAnswerTwo");
+  answerThree.setAttribute("class", "wrongAnswerThree");
   answerCorrect.addEventListener("click", questionTwo);
+  var wrongAnswerOne = document.querySelector(".wrongAnswerOne");
+  wrongAnswerOne.addEventListener("click", wrongAnswer);
+  var wrongAnswerTwo = document.querySelector(".wrongAnswerTwo");
+  wrongAnswerTwo.addEventListener("click", wrongAnswer);
+  var wrongAnswerThree = document.querySelector(".wrongAnswerThree");
+  wrongAnswerThree.addEventListener("click", wrongAnswer);
 }
 
 
@@ -68,11 +81,17 @@ function  questionTwo(){
     answerTwo.innerHTML="rrrrrrr";
     answerThree.innerHTML="please ework";
     answerCorrect.setAttribute("id", "answerCorrect");
-    answerOne.setAttribute("id", "answerOne");
-    answerTwo.setAttribute("id", "answerTwo");
-    answerThree.setAttribute("id", "answerThree");
+    answerOne.setAttribute("class", "wrongAnswerOne");
+    answerTwo.setAttribute("class", "wrongAnswerTwo");
+    answerThree.setAttribute("class", "wrongAnswerThree");
     answerCorrect.addEventListener("click", questionThree);
-}
+    var wrongAnswerOne = document.querySelector(".wrongAnswerOne");
+    wrongAnswerOne.addEventListener("click", wrongAnswer);
+    var wrongAnswerTwo = document.querySelector(".wrongAnswerTwo");
+    wrongAnswerTwo.addEventListener("click", wrongAnswer);
+    var wrongAnswerThree = document.querySelector(".wrongAnswerThree");
+    wrongAnswerThree.addEventListener("click", wrongAnswer);
+};
 
 function questionThree(){
     var questionOne = document.getElementById("questionOne")
@@ -90,11 +109,19 @@ function questionThree(){
     answerTwo.innerHTML="bad gurl";
     answerThree.innerHTML="not fun";
     answerCorrect.setAttribute("id", "answerCorrect");
-    answerOne.setAttribute("id", "answerOne");
-    answerTwo.setAttribute("id", "answerTwo");
-    answerThree.setAttribute("id", "answerThree");
+    answerOne.setAttribute("class", "wrongAnswerOne");
+    answerTwo.setAttribute("class", "wrongAnswerTwo");
+    answerThree.setAttribute("class", "wrongAnswerThree");
     answerCorrect.addEventListener("click", endQuiz);
-}
+    var wrongAnswerOne = document.querySelector(".wrongAnswerOne");
+    wrongAnswerOne.addEventListener("click", wrongAnswer);
+    var wrongAnswerTwo = document.querySelector(".wrongAnswerTwo");
+    wrongAnswerTwo.addEventListener("click", wrongAnswer);
+    var wrongAnswerThree = document.querySelector(".wrongAnswerThree");
+    wrongAnswerThree.addEventListener("click", wrongAnswer);
+};
+
+
 
 function endQuiz(){
     var questionOne = document.getElementById("questionOne");
@@ -102,6 +129,6 @@ function endQuiz(){
     var highScoreHeader = document.createElement("H1");
     highScoreHeader.innerHTML = "HIGH SCORES"
     navBar.appendChild(highScoreHeader);
-}
+};
 
 startQuiz();
