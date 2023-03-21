@@ -3,14 +3,13 @@ var navBar = document.getElementById("navBar");
 var timerDiv = document.getElementById("timer");
 var secondsLeft = 59;
 
-function startQuiz() {
-  startBtn.addEventListener("click", questionOne);
-  startBtn.addEventListener("click", countDown);
-}
+// function startQuiz() {
+//   startBtn.addEventListener("click", questionOne);
+//   startBtn.addEventListener("click", countDown);
+// }
 
 function wrongAnswer(){
-  var newTimer = secondsLeft -5;
-  timerDiv.innerHTML = newTimer;
+  secondsLeft -= 5;
 };
 
 function countDown(){
@@ -25,6 +24,7 @@ function countDown(){
 };
 
 function questionOne() {
+  countDown();
   var startSection = document.getElementById("startQuiz");
   startSection.remove();
   var questionOne = document.createElement("div");
@@ -131,4 +131,6 @@ function endQuiz(){
     navBar.appendChild(highScoreHeader);
 };
 
-startQuiz();
+startBtn.onclick = questionOne;
+//startBtn.onclick = countDown;
+
