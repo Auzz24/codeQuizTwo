@@ -3,7 +3,7 @@ var navBar = document.getElementById("navBar");
 var timerDiv = document.getElementById("timer");
 var secondsLeft = 59;
 var finalScore;
-
+var input = document.getElementById("inputBox");
 // function startQuiz() {
 //   startBtn.addEventListener("click", questionOne);
 //   startBtn.addEventListener("click", countDown);
@@ -18,7 +18,6 @@ function countDown() {
     timerDiv.innerHTML = secondsLeft;
     if (secondsLeft === 0) {
       clearInterval(timer);
-      window.alert("You Lost");
     }
     secondsLeft--;
   }, 1000);
@@ -119,13 +118,28 @@ function questionThree() {
 
 function endQuiz() {
   finalScore = timerDiv.innerHTML;
+  clearInterval(timer)
   timerDiv *= 0;
   var questionOne = document.getElementById("questionOne");
   questionOne.remove();
   var highScoreHeader = document.createElement("H1");
   highScoreHeader.innerHTML = "HIGH SCORE is " + finalScore;
   navBar.appendChild(highScoreHeader);
+  var initalLabel=document.createElement("label");
+  initalLabel.innerHTML = "<input id=inputBox type=text /> Enter Initials: ";
+  //var initials = document.createElement("INPUT")
+  //initials.setAttribute("type", "text");
+  highScoreHeader.appendChild(initalLabel);
+  //initalLabel.appendChild(initials);
+}
+
+function saveScore(){
+ initials.value.trim();
+  if(initials !== ''){
+    console.log("HELLLLLLOOOOO")
+  }
 }
 
 startBtn.onclick = questionOne;
+inputBox.onkeyup = enterPress;
 //startBtn.onclick = countDown;
