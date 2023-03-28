@@ -152,7 +152,7 @@ var input = document.getElementById("inputBox");
     window.localStorage.setItem('scores', JSON.stringify(scores))
   }
 
-
+  window.location.href = 'highscores.html';
 }
 
 function enterPress(event){
